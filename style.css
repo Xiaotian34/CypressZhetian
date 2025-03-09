@@ -1,0 +1,452 @@
+/* Variables para tema oscuro con neón */
+:root {
+    --primary-color: #0DFF92; /* Verde neón */
+    --secondary-color: #FE53BB; /* Rosa neón */
+    --tertiary-color: #08F7FE; /* Azul neón */
+    --background-dark: #0A0A0A; /* Negro casi puro */
+    --card-dark: #121212; /* Negro para tarjetas */
+    --field-dark: #1A1A1A; /* Negro para campos */
+    --text-primary: #FFFFFF; /* Blanco */
+    --text-secondary: #B0B0B0; /* Gris claro */
+    --text-tertiary: #666666; /* Gris oscuro */
+    --border-color: #333333; /* Bordes oscuros */
+    --error-color: #FF3E5E; /* Rojo neón */
+    --success-color: #00FF94; /* Verde éxito */
+    --glow-primary: 0 0 8px rgba(13, 255, 146, 0.7); /* Brillo verde */
+    --glow-secondary: 0 0 8px rgba(254, 83, 187, 0.7); /* Brillo rosa */
+    --glow-tertiary: 0 0 8px rgba(8, 247, 254, 0.7); /* Brillo azul */
+    --radius: 8px; /* Bordes redondeados */
+}
+
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--card-dark);
+    border-radius: var(--radius);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(13, 255, 146, 0.2);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de brillo en bordes */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--tertiary-color), var(--secondary-color));
+    animation: glowBorder 3s linear infinite;
+}
+
+@keyframes glowBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Cabecera */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin-bottom: 5px;
+    text-shadow: var(--glow-primary);
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    background-color: var(--field-dark);
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: var(--text-tertiary);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: var(--glow-primary);
+}
+
+/* Mensajes de error */
+.error-message {
+    color: var(--error-color);
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+    text-shadow: 0 0 5px rgba(255, 62, 94, 0.5);
+}
+
+input.error {
+    border-color: var(--error-color);
+    box-shadow: 0 0 5px rgba(255, 62, 94, 0.5);
+}
+
+/* Botones */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+}
+
+button:hover {
+    background-color: var(--primary-color);
+    box-shadow: var(--glow-primary);
+}
+
+button:hover::before {
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+button:disabled {
+    background-color: var(--text-tertiary);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+button:disabled::before {
+    animation: none;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.form-footer a {
+    color: var(--tertiary-color);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.form-footer a:hover {
+    text-shadow: var(--glow-tertiary);
+}
+
+/* Grupos de checkbox personalizados */
+.checkbox-field {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-field input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background-color: var(--field-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+    position: relative;
+}
+
+.checkbox-field input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-field input:checked::after {
+    content: "✓";
+    font-size: 12px;
+    color: var(--background-dark);
+    position: absolute;
+    top: 1px;
+    left: 4px;
+}
+
+.checkbox-field input:focus {
+    outline: none;
+    box-shadow: var(--glow-primary);
+}
+
+.checkbox-field label {
+    margin-bottom: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.checkbox-field a {
+    color: var(--primary-color);
+}
+
+/* Botones de confirmación */
+.btn-secondary, .btn-primary {
+    display: inline-block;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-size: 13px;
+    text-align: center;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--tertiary-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    border: none;
+}
+
+.btn-secondary:hover {
+    box-shadow: var(--glow-tertiary);
+    border-color: var(--tertiary-color);
+}
+
+.btn-primary:hover {
+    box-shadow: var(--glow-primary);
+}
+
+/* Página de confirmación */
+.confirmation-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.confirmation-box {
+    background-color: var(--card-dark);
+    border-radius: var(--radius);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(13, 255, 146, 0.2);
+    padding: 40px 30px;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.confirmation-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--tertiary-color), var(--secondary-color));
+    animation: glowBorder 3s linear infinite;
+}
+
+.success-icon {
+    margin-bottom: 30px;
+}
+
+.success-icon svg {
+    width: 70px;
+    height: 70px;
+}
+
+.success-icon svg circle {
+    fill: var(--primary-color);
+}
+
+.success-icon svg path {
+    stroke: var(--background-dark);
+    stroke-width: 3;
+}
+
+.confirmation-box h1 {
+    font-size: 24px;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.confirmation-box h1 span {
+    color: var(--primary-color);
+    text-shadow: var(--glow-primary);
+}
+
+.confirmation-text {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.user-info {
+    margin: 30px 0;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius);
+    padding: 20px;
+    border-left: 2px solid var(--primary-color);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--text-secondary);
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.info-value {
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.buttons .btn-secondary,
+.buttons .btn-primary {
+    flex: 1;
+}
+
+footer {
+    position: fixed;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    color: var(--text-tertiary);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* Animación de pulso para elementos clave */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 255, 146, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(13, 255, 146, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 255, 146, 0);
+    }
+}
+
+/* Responsividad */
+@media (max-width: 480px) {
+    .container, .confirmation-box {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    .buttons {
+        flex-direction: column;
+    }
+    
+    .success-icon svg {
+        width: 60px;
+        height: 60px;
+    }
+}
