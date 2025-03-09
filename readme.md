@@ -2,7 +2,7 @@
 
 Este proyecto implementa un formulario de registro de usuario completamente funcional con validaciones del lado del cliente y pruebas automatizadas utilizando Cypress. El sistema ofrece una experiencia de usuario intuitiva con validación en tiempo real y una página de confirmación que muestra los datos ingresados.
 
-![Formulario de Registro](PruebaZhetian.mp4)
+![Formulario de Registro](PruebaZhetian.gif)
 
 ## Características
 
